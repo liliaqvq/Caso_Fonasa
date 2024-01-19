@@ -1,0 +1,62 @@
+1. Configurar frontend con Vite             ✔
+
+2. Configurar backend con python flask      ✔
+
+3. Configurar base de datos con backend     ✔
+
+4. Crear vistas + rutas en App.jsx :
+    * Consultas:
+        - Listado Consultas     ✔
+        - Crear Consulta        ✔
+    * Pacientes:
+        - Listado Ninnos        ✔
+        - Crear Ninnos          ✔
+        - Listado Jovenes       ✔
+        - Crear Joven           ✔
+        - Listado Ancianos      ✔
+        - Crear Anciano         ✔
+        - Listado en Riesgo     ✔
+        - Listado Fumadores     ✔
+        - Listado mas Ancianos  ✔
+
+7. Crear funciones de calculo de prioridad y riesgo :
+    - Calcular Ninnos
+    - Calcular Jovenes
+    - Calcular Ancianos
+
+8. Rangos de prioridad y riesgo :
+    - Prioridad de ninnos va de 1 a 4
+    - Prioridad de jovenes va de 2 a 12
+    - Prioridad de ancianos va de 4.3 a 9
+
+    - Riesgo de ninnos va de 0.01 a 0.6
+    - Riesgo de jovenes va de 0.32 a 4.8
+    - Riesgo de ancianos va de 7.063 a 14.3
+
+9. Agregar funciones de prioridad, riesgo y numero de historia clinica al crear pacientes
+
+
+10. Conectar backend y frontend
+
+11. Flujo:
+
+    a. Atender todos los pacientes en la sala de espera que sea posible dada la disponibilidad de consultas:
+
+        Se verifica la disponibilidad de consultas.
+        Los pacientes en la sala de espera se asignan a las consultas disponibles.
+        Se actualiza el estado de las consultas y se decrementa la cantidad de pacientes disponibles en esas consultas.
+
+    b. Si la sala de espera está vacía (inicialmente o luego de atender a los pacientes en espera) se atienden los pacientes pendientes según su prioridad y orden de llegada:
+        Se verifica si la sala de espera está vacía después de la primera etapa.
+        Si la sala de espera está vacía, se procede a atender a los pacientes pendientes.
+        Los pacientes pendientes se seleccionan según su prioridad y orden de llegada.
+        Se asignan a las consultas disponibles si hay consultas libres.
+        Se actualiza el estado de las consultas y se decrementa la cantidad de pacientes disponibles en esas consultas.
+
+    c. Si luego de atendidos los de la sala de espera no quedara ninguna consulta libre, entonces el paciente de la sala de pendiente que le corresponde ser atendido según su prioridad, pasa a la sala de espera, sino será atendido por la consulta adecuada:
+
+        Después de atender a los pacientes en la sala de espera y los pendientes, se verifica nuevamente la disponibilidad de consultas.
+        Si no hay consultas libres, se selecciona al paciente de la sala de pendientes que tiene la mayor prioridad y aún no ha sido atendido.
+        Este paciente se traslada a la sala de espera.
+        Si hay consultas libres, se asigna a los pacientes de la sala de espera a estas consultas.
+
